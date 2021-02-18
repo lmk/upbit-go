@@ -48,6 +48,30 @@ func ExampleGetMinuteCandles() {
 	// KRW-BTC
 }
 
+func ExampleGetMinuteCandlesWithDate() {
+	setUp()
+
+	candles, err := client.MinuteCandles(1, "KRW-BTC", map[string]string{
+		"count": "5",
+		"to":    "2021-02-17 13:00:00",
+	})
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	fmt.Println(len(candles))
+	for _, candle := range candles {
+		fmt.Println(candle)
+	}
+	// Output:
+	// 5
+	// &{KRW-BTC 2021-02-17T12:59:00 2021-02-17T21:59:00 5.6154e+07 5.6216e+07 5.6153e+07 5.6202e+07 1613566799895 5.5939488761622e+08 9.95936628 1}
+	// &{KRW-BTC 2021-02-17T12:58:00 2021-02-17T21:58:00 5.6166e+07 5.617e+07 5.6153e+07 5.6153e+07 1613566740326 7.2022304480913e+08 12.82496912 1}
+	// &{KRW-BTC 2021-02-17T12:57:00 2021-02-17T21:57:00 5.6169e+07 5.62e+07 5.6165e+07 5.6166e+07 1613566680374 5.7768898576905e+08 10.28399756 1}
+	// &{KRW-BTC 2021-02-17T12:56:00 2021-02-17T21:56:00 5.615e+07 5.6294e+07 5.6091e+07 5.6186e+07 1613566620104 6.4990655501209e+08 11.56963224 1}
+	// &{KRW-BTC 2021-02-17T12:55:00 2021-02-17T21:55:00 5.6025e+07 5.6171e+07 5.6e+07 5.615e+07 1613566560096 1.01642957584032e+09 18.13659205 1}
+}
+
 func ExampleWrongUnitGetMinuteCandles() {
 	setUp()
 

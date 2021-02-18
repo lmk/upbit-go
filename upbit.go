@@ -6,8 +6,8 @@ import (
 
 	"github.com/dgrijalva/jwt-go"
 
-	"github.com/hannut91/upbit-go/types"
-	"github.com/hannut91/upbit-go/util"
+	"github.com/lmk/upbit-go/types"
+	"github.com/lmk/upbit-go/util"
 )
 
 const (
